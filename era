@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Untitled Proxy</title>
+  <style>
+    body {
+      background-color: #f8c8dc; /* Light pink */
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 50px;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+    }
+
+    .bojan-img {
+      width: 250px;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      margin-bottom: 30px;
+    }
+
+    .proxy-form input[type="text"] {
+      padding: 10px;
+      width: 300px;
+      border-radius: 10px;
+      border: none;
+      margin-right: 10px;
+    }
+
+    .proxy-form button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      background-color: #ff80aa;
+      color: white;
+      cursor: pointer;
+    }
+
+    .proxy-form button:hover {
+      background-color: #e06090;
+    }
+  </style>
+</head>
+<body>
+  <h1>Untitled Proxy</h1>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Bojan_Krkic_2012.jpg" alt="Bojan Krkic" class="bojan-img">
+
+  <form class="proxy-form" onsubmit="return redirectProxy(event)">
+    <input type="text" id="urlInput" placeholder="Enter URL...">
+    <button type="submit">Go</button>
+  </form>
+
+  <script>
+    function redirectProxy(e) {
+      e.preventDefault();
+      const url = document.getElementById('urlInput').value;
+      if (!url) return;
+
+      // Redirect to a fake proxy endpoint (you can swap this with a real one like Corrosion or Ultraviolet later)
+      const proxiedURL = `https://example.com/proxy/${encodeURIComponent(url)}`;
+      window.location.href = proxiedURL;
+    }
+  </script>
+</body>
+</html>
