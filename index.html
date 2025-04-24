@@ -1,1 +1,91 @@
-!DOCTYPE html>%0A<html lang%3D"en">%0A<head>%0A <meta charset%3D"UTF-8" %2F>%0A <meta name%3D"viewport" content%3D"width%3Ddevice-width%2C initial-scale%3D1.0" %2F>%0A <title>Aura Exeuctor<%2Ftitle>%0A <style>%0A body %7B%0A background%3A %231e1e1e%3B%0A color%3A %23d4d4d4%3B%0A font-family%3A monospace%3B%0A padding%3A 20px%3B%0A %7D%0A h1 %7B%0A color%3A %2300ff00%3B%0A %7D%0A textarea %7B%0A width%3A 100%25%3B%0A height%3A 200px%3B%0A background%3A %23252526%3B%0A color%3A %23d4d4d4%3B%0A border%3A 1px solid %23333%3B%0A padding%3A 10px%3B%0A font-family%3A monospace%3B%0A font-size%3A 14px%3B%0A resize%3A none%3B%0A %7D%0A .buttons %7B%0A margin-top%3A 10px%3B%0A %7D%0A button %7B%0A background%3A %233c3c3c%3B%0A color%3A white%3B%0A border%3A none%3B%0A padding%3A 10px 20px%3B%0A margin-right%3A 10px%3B%0A font-size%3A 14px%3B%0A cursor%3A pointer%3B%0A border-radius%3A 5px%3B%0A %7D%0A button%3Ahover %7B%0A background%3A %235a5a5a%3B%0A %7D%0A %23console %7B%0A background%3A %23111%3B%0A border%3A 1px solid %23333%3B%0A padding%3A 10px%3B%0A margin-top%3A 20px%3B%0A height%3A 150px%3B%0A overflow-y%3A auto%3B%0A white-space%3A pre-wrap%3B%0A %7D%0A <%2Fstyle>%0A<%2Fhead>%0A<body>%0A <h1>Aura Executor<%2Fh1>%0A <textarea id%3D"scriptArea" placeholder%3D"-- Paste your script here"><%2Ftextarea>%0A <div class%3D"buttons">%0A <button onclick%3D"attach()">Attach<%2Fbutton>%0A <button onclick%3D"execute()">Execute<%2Fbutton>%0A <button onclick%3D"clearConsole()">Clear<%2Fbutton>%0A <%2Fdiv>%0A <div id%3D"console">%5BConsole Output%5D<%2Fdiv>%0A%0A <script>%0A function logToConsole(message) %7B%0A const consoleBox %3D document.getElementById('console')%3B%0A consoleBox.innerText %2B%3D "%5Cn" %2B message%3B%0A consoleBox.scrollTop %3D consoleBox.scrollHeight%3B%0A %7D%0A%0A function attach() %7B%0A logToConsole("%5BINFO%5D Executor attached successfully (fake)")%3B%0A %7D%0A%0A function execute() %7B%0A const script %3D document.getElementById('scriptArea').value%3B%0A if (script.trim() %3D%3D%3D "") %7B%0A logToConsole("%5BERROR%5D No script to execute")%3B%0A %7D else %7B%0A logToConsole("%5BEXECUTE%5D Running script...%5Cn" %2B script)%3B%0A logToConsole("%5BSUCCESS%5D Script executed (fake)")%3B%0A %7D%0A %7D%0A%0A function clearConsole() %7B%0A document.getElementById('console').innerText %3D "%5BConsole Output%5D"%3B%0A %7D%0A <%2Fscript>%0A<%2Fbody>%0A<%2Fhtml>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Impact Executor</title>
+  <style>
+    body {
+      background: #1e1e1e;
+      color: #d4d4d4;
+      font-family: monospace;
+      padding: 20px;
+    }
+    h1 {
+      color: #00ff00;
+    }
+    textarea {
+      width: 100%;
+      height: 200px;
+      background: #252526;
+      color: #d4d4d4;
+      border: 1px solid #333;
+      padding: 10px;
+      font-family: monospace;
+      font-size: 14px;
+      resize: none;
+    }
+    .buttons {
+      margin-top: 10px;
+    }
+    button {
+      background: #3c3c3c;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin-right: 10px;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover {
+      background: #5a5a5a;
+    }
+    #console {
+      background: #111;
+      border: 1px solid #333;
+      padding: 10px;
+      margin-top: 20px;
+      height: 150px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <h1>Impact</h1>
+  <textarea id="scriptArea" placeholder="-- Paste your script here"></textarea>
+  <div class="buttons">
+    <button onclick="attach()">Attach</button>
+    <button onclick="execute()">Execute</button>
+    <button onclick="clearConsole()">Clear</button>
+  </div>
+  <div id="console">[Console Output]</div>
+
+  <script>
+    function logToConsole(message) {
+      const consoleBox = document.getElementById('console');
+      consoleBox.innerText += "\n" + message;
+      consoleBox.scrollTop = consoleBox.scrollHeight;
+    }
+
+    function attach() {
+      logToConsole("[INFO] Executor attached successfully");
+    }
+
+    function execute() {
+      const script = document.getElementById('scriptArea').value;
+      if (script.trim() === "") {
+        logToConsole("[ERROR] No script to execute");
+      } else {
+        logToConsole("[EXECUTE] Running script...\n" + script);
+        logToConsole("[SUCCESS] Script executed");
+      }
+    }
+
+    function clearConsole() {
+      document.getElementById('console').innerText = "[Console Output]";
+    }
+  </script>
+</body>
+</html>
